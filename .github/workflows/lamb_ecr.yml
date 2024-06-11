@@ -1,14 +1,14 @@
 
-name: lamb_ to_ecr
+name: mod1_to_ecr
 on:
   push
 
 env:
   AWS_ACESS_KEY_ID: ${{ secrets.AWS_ACCES_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
   AWS_REGION : ${{ secrets.AWS_REGION }}
   
-
 permissions:
   id-token: write   # This is required for requesting the JWT
   contents: read    # This is required for actions/checkout
@@ -39,7 +39,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPO }}
-
+        
         run: |
           # Build a docker container and push it to ECR
 
