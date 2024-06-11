@@ -1,5 +1,5 @@
 
-name: mod1_to_ecr
+name: lamb_to_ecr
 on:
   push
 
