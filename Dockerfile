@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # read the doc: https://huggingface.co/docs/hub/spaces-sdks-docker
 # you will also find guides on how best to write your Dockerfile
-ARG INCLUDE_DB=false
+ARG INCLUDE_DB=true
 
 # stage that install the dependencies
 FROM node:20 as builder-production
@@ -48,7 +48,7 @@ RUN chown -R 1000:1000 /data/db
 FROM local_db_${INCLUDE_DB} as final
 
 # build arg to determine if the database should be included
-ARG INCLUDE_DB=false
+ARG INCLUDE_DB=true
 ENV INCLUDE_DB=${INCLUDE_DB}
 
 # svelte requires APP_BASE at build time so it must be passed as a build arg
